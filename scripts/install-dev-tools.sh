@@ -18,7 +18,15 @@ sudo apt-get -y install libncurses5-dev
 
 echo "--> For building Erlang with wxWidgets"
 
-sudo apt-get -y install libwxgtk3.0-dev libgl1-mesa-dev libglu1-mesa-dev libpng-dev
+sudo apt-get -y install \
+  libwxgtk3.0-dev \
+  libgl1-mesa-dev \
+  libglu1-mesa-dev \
+  libpng-dev \
+  libncurses5-dev \
+  libssl-dev \
+  automake \
+  autoconf
 
 echo "--> Install essential SSL library"
 
@@ -47,6 +55,7 @@ asdf plugin-add python
 echo "--> Add ASDF NodeJS"
 
 asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 
 echo "--> Add ASDF Elixir"
 

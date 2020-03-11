@@ -7,9 +7,9 @@ echo "--> Update source list"
 
 sudo apt-get -y update
 
-echo "--> Install network tools"
+echo "--> Install essentials utilisy tools"
 
-sudo apt-get -y install curl wget
+sudo apt-get -y install curl wget git gnupg2 unzip
 
 echo "--> Install Zsh"
 
