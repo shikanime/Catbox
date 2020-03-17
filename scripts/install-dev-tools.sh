@@ -12,6 +12,27 @@ echo "--> Needed for Erlang HiPE (native code) support"
 
 sudo apt-get -y install m4
 
+echo "--> LLVM toolchains"
+
+sudo apt-get install \
+  clang-format \
+  clang-tidy \
+  clang-tools \
+  clang \
+  libc++-dev \
+  libc++1 \
+  libc++abi-dev \
+  libc++abi1 \
+  libclang-dev \
+  libclang1 \
+  libomp-dev \
+  libomp5 \
+  lld \
+  lldb \
+  llvm-dev \
+  llvm-runtime \
+  llvm
+
 echo "--> Needed for Erlang terminal handling"
 
 sudo apt-get -y install libncurses5-dev
