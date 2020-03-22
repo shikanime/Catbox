@@ -3,7 +3,7 @@ export WINDOWS_HOME="/mnt/c/Users/$USER"
 umask 022
 
 # Java
-export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
 
 # Vagrant
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
