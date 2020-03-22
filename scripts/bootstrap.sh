@@ -7,9 +7,15 @@ echo "--> Update source list"
 
 sudo apt-get -y update
 
-echo "--> Install essentials utilisy tools"
+echo "--> Install essentials utility tools"
 
-sudo apt-get -y install curl wget git gnupg2 unzip
+sudo apt-get -y install \
+  curl \
+  wget \
+  git \
+  gnupg2 \
+  unzip \
+  jq
 
 echo "--> Install Zsh"
 
