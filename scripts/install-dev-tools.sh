@@ -15,7 +15,7 @@ sudo apt-get install \
   libc++-dev \
   libc++1 \
   libc++abi-dev \
-  libc++abi1 \
+  libc++abi1 \/
   libclang-dev \
   libclang1 \
   libomp-dev \
@@ -25,6 +25,10 @@ sudo apt-get install \
   llvm-dev \
   llvm-runtime \
   llvm
+  
+echo "--> Install Java OpenJDK"
+
+sudo apt-get install openjdk-8-jre
 
 echo "--> Install Rust toolchains"
 
@@ -92,11 +96,6 @@ asdf plugin-add ocaml https://github.com/asdf-community/asdf-ocaml.git
 echo "--> Add ASDF Ruby"
 
 asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
-
-echo "--> Add ASDF Java"
-
-sudo apt-get -y install jq
-asdf plugin-add java https://github.com/halcyon/asdf-java.git
 
 echo "--> Add ASDF Install"
 
