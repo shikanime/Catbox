@@ -3,22 +3,10 @@
 set -o errexit
 set -o nounset
 
-echo "--> Install prerequisites"
+echo "--> Install C/C++ toolchains"
 
 sudo apt-get -y update
 sudo apt-get -y install build-essential
-
-echo "--> Add Golang compiler"
-sudo add-apt-repository ppa:longsleep/golang-backports
-sudo apt update
-sudo apt install golang-go
-
-echo "--> Needed for Erlang HiPE (native code) support"
-
-sudo apt-get -y install m4
-
-echo "--> LLVM toolchains"
-
 sudo apt-get install \
   clang-format \
   clang-tidy \
@@ -38,29 +26,19 @@ sudo apt-get install \
   llvm-runtime \
   llvm
 
-echo "--> Needed for Erlang terminal handling"
+echo "--> Install Rust toolchains"
 
-sudo apt-get -y install libncurses5-dev
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-echo "--> For building Erlang with wxWidgets"
+echo "--> Install Golang toolchains"
 
-sudo apt-get -y install \
-  libwxgtk3.0-dev \
-  libgl1-mesa-dev \
-  libglu1-mesa-dev \
-  libpng-dev \
-  libncurses5-dev \
-  libssl-dev \
-  automake \
-  autoconf
+sudo add-apt-repository ppa:longsleep/golang-backports
+sudo apt update
+sudo apt install golang-go
 
 echo "--> Install essential SSL library"
 
 sudo apt-get -y install libssh-dev
-
-echo "--> For building Erlang documentation"
-
-sudo apt-get -y install libxml2-utils xsltproc fop
 
 echo "--> Add ASDF Bazel"
 
@@ -89,15 +67,27 @@ asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
 
 echo "--> Add ASDF Erlang"
 
+sudo apt-get -y install \
+  m4 \
+  libwxgtk3.0-dev \
+  libgl1-mesa-dev \
+  libglu1-mesa-dev \
+  libpng-dev \
+  libncurses5-dev \
+  libssl-dev \
+  automake \
+  autoconf \
+  libncurses5-dev \
+  libxml2-utils \
+  xsltproc \
+  fop
+
 asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
+asdf plugin-add rebar https://github.com/Stratus3D/asdf-rebar.git
 
 echo "--> Add ASDF Ocaml"
 
 asdf plugin-add ocaml https://github.com/asdf-community/asdf-ocaml.git
-
-echo "--> Add ASDF Rust"
-
-asdf plugin-add rust https://github.com/code-lever/asdf-rust.git
 
 echo "--> Add ASDF Ruby"
 
