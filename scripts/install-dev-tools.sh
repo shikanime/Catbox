@@ -69,15 +69,21 @@ echo "--> Add ASDF Erlang"
 
 sudo apt-get -y install \
   m4 \
+  libreadline-dev \
+  libncurses-dev \
+  libssh-dev \
+  libyaml-dev \
+  libxslt-dev \
+  libffi-dev \
+  libtool \
+  unixodbc-dev \
   libwxgtk3.0-dev \
   libgl1-mesa-dev \
   libglu1-mesa-dev \
   libpng-dev \
-  libncurses5-dev \
   libssl-dev \
   automake \
   autoconf \
-  libncurses5-dev \
   libxml2-utils \
   xsltproc \
   fop
