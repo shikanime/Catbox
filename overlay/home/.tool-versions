@@ -8,6 +8,5 @@ erlang 22.2
 haskell 8.6.5
 rust 1.40.0
 ocaml 4.06
-golang 1.13
 ruby 2.7.0
 java adopt-openjdk-11.0.6+10

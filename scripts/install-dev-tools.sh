@@ -8,6 +8,11 @@ echo "--> Install prerequisites"
 sudo apt-get -y update
 sudo apt-get -y install build-essential
 
+echo "--> Add Golang compiler"
+sudo add-apt-repository ppa:longsleep/golang-backports
+sudo apt update
+sudo apt install golang-go
+
 echo "--> Needed for Erlang HiPE (native code) support"
 
 sudo apt-get -y install m4
@@ -102,10 +107,6 @@ echo "--> Add ASDF Java"
 
 sudo apt-get -y install jq
 asdf plugin-add java https://github.com/halcyon/asdf-java.git
-
-echo "--> Add ASDF Go"
-
-asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
 
 echo "--> Add ASDF Install"
 
