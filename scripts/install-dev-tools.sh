@@ -56,10 +56,6 @@ echo "--> Add ASDF Julia"
 
 asdf plugin-add julia https://github.com/rkyleg/asdf-julia.git
 
-echo "--> Add ASDF Python"
-
-asdf plugin-add python
-
 echo "--> Add ASDF NodeJS"
 
 asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
