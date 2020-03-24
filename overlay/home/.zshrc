@@ -1,5 +1,6 @@
 # Windows
 export WINDOWS_HOME="/mnt/c/Users/$USER"
+export DISPLAY=localhost:0.0
 umask 022
 
 # Java
@@ -7,7 +8,6 @@ export JAVA_HOME="/usr/lib/jvm/default-java"
 
 # Vagrant
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
-export VAGRANT_DEFAULT_PROVIDER="hyperv"
 
 # Erlang history
 export ERL_AFLAGS="-kernel shell_history enabled"
