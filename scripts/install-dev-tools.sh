@@ -3,6 +3,37 @@
 set -o errexit
 set -o nounset
 
+echo "--> Install Erlang/Elixir toolchains"
+
+sudo add-apt-repository \
+  "deb http://binaries.erlang-solutions.com/ubuntu $(lsb_release -cs) contrib"
+sudo apt-get update -y
+
+sudo apt-get -y install \
+  m4 \
+  libreadline-dev \
+  libncurses-dev \
+  libssh-dev \
+  libyaml-dev \
+  libxslt-dev \
+  libffi-dev \
+  libtool \
+  unixodbc-dev \
+  libwxgtk3.0-dev \
+  libgl1-mesa-dev \
+  libglu1-mesa-dev \
+  libpng-dev \
+  libssl-dev \
+  automake \
+  autoconf \
+  libxml2-utils \
+  xsltproc \
+  fop \
+  esl-erlang \
+  elixir
+
+mix do local.hex --force, local.rebar --force
+
 echo "--> Install C/C++ toolchains"
 
 sudo apt-get -y update
@@ -15,7 +46,7 @@ sudo apt-get install \
   libc++-dev \
   libc++1 \
   libc++abi-dev \
-  libc++abi1 \/
+  libc++abi1 \
   libclang-dev \
   libclang1 \
   libomp-dev \
@@ -25,7 +56,7 @@ sudo apt-get install \
   llvm-dev \
   llvm-runtime \
   llvm
-  
+
 echo "--> Install Java OpenJDK"
 
 sudo apt-get install default-jdk
@@ -60,36 +91,6 @@ echo "--> Add ASDF NodeJS"
 
 asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
-
-echo "--> Add ASDF Elixir"
-
-asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
-
-echo "--> Add ASDF Erlang"
-
-sudo apt-get -y install \
-  m4 \
-  libreadline-dev \
-  libncurses-dev \
-  libssh-dev \
-  libyaml-dev \
-  libxslt-dev \
-  libffi-dev \
-  libtool \
-  unixodbc-dev \
-  libwxgtk3.0-dev \
-  libgl1-mesa-dev \
-  libglu1-mesa-dev \
-  libpng-dev \
-  libssl-dev \
-  automake \
-  autoconf \
-  libxml2-utils \
-  xsltproc \
-  fop
-
-asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
-asdf plugin-add rebar https://github.com/Stratus3D/asdf-rebar.git
 
 echo "--> Add ASDF Ocaml"
 

@@ -11,7 +11,6 @@ Vagrant.configure("2") do |config|
     velgard.vm.provision :shell, privileged: false, path: "scripts/bootstrap.sh"
     velgard.vm.provision :shell, privileged: false, path: "scripts/install-dev-tools.sh"
     velgard.vm.provision :shell, privileged: false, path: "scripts/install-kubernetes-tools.sh"
-    velgard.vm.provision :shell, privileged: false, path: "scripts/config-elixir-env.sh"
     velgard.vm.provision :shell, privileged: false, path: "scripts/config-haskell-env.sh"
     velgard.vm.provision :file, source: "overlay/home", destination: "$HOME"
     velgard.vm.provision :file, source: "~/.gitconfig", destination: "$HOME/.gitconfig"
