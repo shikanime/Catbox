@@ -37,8 +37,8 @@ mix do local.hex --force, local.rebar --force
 echo "--> Install C/C++ toolchains"
 
 sudo apt-get -y update
-sudo apt-get -y install build-essential
 sudo apt-get install \
+  build-essential \
   clang-format \
   clang-tidy \
   clang-tools \
