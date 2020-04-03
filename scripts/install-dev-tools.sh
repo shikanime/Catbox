@@ -3,6 +3,11 @@
 set -o errexit
 set -o nounset
 
+echo "--> Install Haskell toolchains"
+
+sudo apt-get install haskell-platform
+curl -fsSL https://get.haskellstack.org/ | sh
+
 echo "--> Install Erlang/Elixir toolchains"
 
 sudo add-apt-repository \
@@ -78,10 +83,6 @@ sudo apt-get -y install libssh-dev
 echo "--> Add ASDF Bazel"
 
 asdf plugin-add bazel https://github.com/rajatvig/asdf-bazel.git
-
-echo "--> Add ASDF Haskell"
-
-asdf plugin-add haskell https://github.com/vic/asdf-haskell.git
 
 echo "--> Add ASDF Julia"
 
