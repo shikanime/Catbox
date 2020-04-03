@@ -3,6 +3,10 @@
 set -o errexit
 set -o nounset
 
+echo "--> Install essential SSL library"
+
+sudo apt-get -y install libssh-dev
+
 echo "--> Install Haskell toolchains"
 
 sudo apt-get install haskell-platform
@@ -77,10 +81,6 @@ sudo add-apt-repository ppa:longsleep/golang-backports
 sudo apt update
 sudo apt install golang-go
 
-echo "--> Install essential SSL library"
-
-sudo apt-get -y install libssh-dev
-
 echo "--> Add ASDF Bazel"
 
 asdf plugin-add bazel https://github.com/rajatvig/asdf-bazel.git
@@ -93,6 +93,7 @@ echo "--> Add ASDF NodeJS"
 
 asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 
 echo "--> Add ASDF Ocaml"
 
