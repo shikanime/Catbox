@@ -3,22 +3,22 @@
 set -o errexit
 set -o nounset
 
-echo "--> Install essential SSL library"
+echo "==> Install essential SSL library"
 
-sudo apt-get -y install libssh-dev
+sudo apt-get install -y libssh-dev
 
-echo "--> Install Haskell toolchains"
+echo "==> Install Haskell toolchains"
 
-sudo apt-get install haskell-platform
+sudo apt-get install -y haskell-platform
 curl -fsSL https://get.haskellstack.org/ | sh
 
-echo "--> Install Erlang/Elixir toolchains"
+echo "==> Install Erlang/Elixir toolchains"
 
 sudo add-apt-repository \
   "deb http://binaries.erlang-solutions.com/ubuntu $(lsb_release -cs) contrib"
 sudo apt-get update -y
 
-sudo apt-get -y install \
+sudo apt-get install -y \
   m4 \
   libreadline-dev \
   libncurses-dev \
@@ -43,10 +43,10 @@ sudo apt-get -y install \
 
 mix do local.hex --force, local.rebar --force
 
-echo "--> Install C/C++ toolchains"
+echo "==> Install C/C++ toolchains"
 
 sudo apt-get -y update
-sudo apt-get install \
+sudo apt-get install -y \
   build-essential \
   cmake \
   clang-format \
@@ -67,42 +67,42 @@ sudo apt-get install \
   llvm-runtime \
   llvm
 
-echo "--> Install Java OpenJDK"
+echo "==> Install OCaml toolchains"
 
-sudo apt-get install default-jdk
+sudo apt-get install -y opam
+opam init --disable-shell-hook
+opam switch create 4.06.1
+opam install -y ocamlformat menhir
 
-echo "--> Install Rust toolchains"
+echo "==> Install Java OpenJDK"
+
+sudo apt-get install -y default-jdk
+
+echo "==> Install Rust toolchains"
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-echo "--> Install Golang toolchains"
+echo "==> Install Golang toolchains"
 
 sudo add-apt-repository ppa:longsleep/golang-backports
-sudo apt update
-sudo apt install golang-go
+sudo apt-get update
+sudo apt-get install -y golang-go
 
-echo "--> Add ASDF Bazel"
-
-asdf plugin-add bazel https://github.com/rajatvig/asdf-bazel.git
-
-echo "--> Add ASDF Julia"
-
-asdf plugin-add julia https://github.com/rkyleg/asdf-julia.git
-
-echo "--> Add ASDF NodeJS"
-
-asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
-curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
-
-echo "--> Add ASDF Ocaml"
-
-asdf plugin-add ocaml https://github.com/asdf-community/asdf-ocaml.git
-
-echo "--> Add ASDF Ruby"
+echo "==> Add ASDF plugins"
 
 asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
-
-echo "--> Add ASDF Install"
-
+asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 asdf install
+
+echo "==> Configure NodeJS"
+
+asdf install nodejs
+curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
+yarn add -g \
+  bs-platform \
+  typescript \
+  tslint \
+  ts-node \
+  eslint \
+  prettier

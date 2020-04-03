@@ -3,32 +3,32 @@
 set -o errexit
 set -o nounset
 
-echo "--> Install prerequisites"
+echo "==> Install prerequisites"
 
-sudo apt-get -y install \
+sudo apt-get install -y \
   apt-transport-https \
   ca-certificates \
   curl \
   software-properties-common
 
-echo "--> Add an apt signing key for Docker"
+echo "==> Add an APT signing key for Docker"
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
-echo "--> Add apt repository for stable version"
+echo "==> Add APT repository for stable version"
 
 sudo add-apt-repository \
   "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 sudo apt-get update -y
 
-echo "--> Install docker and its dependecies"
+echo "==> Install docker and its dependecies"
 
-sudo apt-get -y install \
+sudo apt-get install -y \
   docker-ce \
   docker-ce-cli \
   containerd.io
 
-echo "--> Setup Docker Daemon"
+echo "==> Setup Docker Daemon"
 
 cat <<EOF | sudo tee -a /etc/docker/daemon.json
 {
@@ -42,43 +42,43 @@ cat <<EOF | sudo tee -a /etc/docker/daemon.json
 EOF
 sudo mkdir -p /etc/systemd/system/docker.service.d
 
-echo "--> Restart Docker"
+echo "==> Restart Docker"
 
 sudo systemctl daemon-reload
 sudo systemctl restart docker
 
-echo "--> Add vagrant user to docker group"
+echo "==> Add vagrant user to docker group"
 
 sudo usermod -aG docker vagrant
 
-echo "--> Add an apt signing key for Kubernetes"
+echo "==> Add an APT signing key for Kubernetes"
 
 curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 
-echo "--> Adding apt repository for Kubernetes"
+echo "==> Adding APT repository for Kubernetes"
 
 sudo add-apt-repository \
   "deb https://apt.kubernetes.io/ kubernetes-$(lsb_release -cs) main"
 sudo apt-get update
 
-echo "--> Install Kubernetes binaries"
+echo "==> Install Kubernetes binaries"
 
-sudo apt-get -y install kubectl
+sudo apt-get install -y kubectl
 
-echo "--> Install Skaffold"
+echo "==> Install Skaffold"
 
 curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
 chmod +x skaffold
 sudo mv skaffold /usr/local/bin
 
-echo "--> Install Terraform"
+echo "==> Install Terraform"
 
-sudo apt-get install unzip
+sudo apt-get install -y unzip
 wget https://releases.hashicorp.com/terraform/0.12.21/terraform_0.12.21_linux_amd64.zip
 unzip terraform_0.12.21_linux_amd64.zip
 rm -f terraform_0.12.21_linux_amd64.zip
 sudo mv terraform /usr/local/bin/
 
-echo "--> Install Helm"
+echo "==> Install Helm"
 
 curl -fsSL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
