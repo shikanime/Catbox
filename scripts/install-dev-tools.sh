@@ -44,6 +44,7 @@ echo "--> Install C/C++ toolchains"
 sudo apt-get -y update
 sudo apt-get install \
   build-essential \
+  cmake \
   clang-format \
   clang-tidy \
   clang-tools \
