@@ -9,7 +9,7 @@ export JAVA_HOME="/usr/lib/jvm/default-java"
 # Vagrant
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
 
-# Erlang history
+# Erlang
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 # oh-my-zsh.
