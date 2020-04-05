@@ -3,6 +3,9 @@ export WINDOWS_HOME="/mnt/c/Users/$USER"
 export DISPLAY=localhost:0.0
 umask 022
 
+# Yarn
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
 # Java
 export JAVA_HOME="/usr/lib/jvm/default-java"
 
