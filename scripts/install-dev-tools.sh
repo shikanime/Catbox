@@ -71,7 +71,9 @@ sudo apt-get install -y \
   lldb \
   llvm-dev \
   llvm-runtime \
-  llvm
+  llvm \
+  xorg-dev \
+  libglu1-mesa-dev
 
 echo "==> Install OCaml toolchains"
 
