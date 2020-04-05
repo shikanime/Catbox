@@ -43,7 +43,7 @@ sudo apt-get install -y \
 
 mix do local.hex --force, local.rebar --force
 
-echo "==> Install C/C++ toolchains"
+echo "==> Install CMake"
 
 wget https://cmake.org/files/v3.17/cmake-3.17.0.tar.gz
 tar -xzf cmake-3.17.0.tar.gz
@@ -51,6 +51,8 @@ cd cmake-3.17.0/ &&
   ./bootstrap &&
   make -j$(nproc) &&
   sudo make install
+
+echo "==> Install C/C++ toolchains"
 
 sudo apt-get -y update
 sudo apt-get install -y \
@@ -73,6 +75,7 @@ sudo apt-get install -y \
   llvm-runtime \
   llvm \
   xorg-dev \
+  mesa-utils \
   libglu1-mesa-dev
 
 echo "==> Install OCaml toolchains"
@@ -114,3 +117,8 @@ yarn add -g \
   ts-node \
   eslint \
   prettier
+
+echo "==> Install Emscripten compiler"
+
+emsdk install latest
+emsdk activate latest

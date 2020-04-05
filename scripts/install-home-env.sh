@@ -37,6 +37,10 @@ echo "==> Install ASDF"
 
 git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.7.6
 
+echo "==> Install Emscripten"
+
+git clone https://github.com/emscripten-core/emsdk.git $HOME/.emsdk
+
 echo "==> Migrate shell"
 
 zsh
