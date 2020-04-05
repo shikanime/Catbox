@@ -45,10 +45,16 @@ mix do local.hex --force, local.rebar --force
 
 echo "==> Install C/C++ toolchains"
 
+wget https://cmake.org/files/v3.17/cmake-3.17.0.tar.gz
+tar -xzf cmake-3.17.0.tar.gz
+cd cmake-3.17.0/ &&
+  ./bootstrap &&
+  make -j$(nproc) &&
+  sudo make install
+
 sudo apt-get -y update
 sudo apt-get install -y \
   build-essential \
-  cmake \
   clang-format \
   clang-tidy \
   clang-tools \
