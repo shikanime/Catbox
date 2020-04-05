@@ -74,6 +74,7 @@ sudo apt-get install -y \
   llvm-dev \
   llvm-runtime \
   llvm \
+  ninja-build \
   xorg-dev \
   mesa-utils \
   libglu1-mesa-dev
