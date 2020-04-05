@@ -67,7 +67,7 @@ sudo apt-get install -y kubectl
 
 echo "==> Install Skaffold"
 
-curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
+wget https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
 chmod +x skaffold
 sudo mv skaffold /usr/local/bin
 
