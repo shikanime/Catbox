@@ -82,3 +82,7 @@ sudo mv terraform /usr/local/bin/
 echo "==> Install Helm"
 
 curl -fsSL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+
+echo "==> Install Kustomize"
+
+curl -fsSL https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh | bash
