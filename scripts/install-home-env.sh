@@ -16,7 +16,8 @@ sudo apt-get install -y \
   gnupg2 \
   unzip \
   jq \
-  inotify-tools
+  inotify-tools \
+  software-properties-common
 
 echo "==> Install Zsh"
 
