@@ -3,10 +3,6 @@
 set -o errexit
 set -o nounset
 
-echo "==> Update source list"
-
-sudo apt-get -y update
-
 echo "==> Install essentials utility tools"
 
 sudo apt-get install -y \
@@ -17,7 +13,8 @@ sudo apt-get install -y \
   unzip \
   jq \
   inotify-tools \
-  software-properties-common
+  software-properties-common \
+  neovim
 
 echo "==> Install Zsh"
 
