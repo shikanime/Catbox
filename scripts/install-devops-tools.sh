@@ -7,9 +7,7 @@ echo "==> Install prerequisites"
 
 sudo apt-get install -y \
   apt-transport-https \
-  ca-certificates \
-  curl \
-  software-properties-common
+  ca-certificates
 
 echo "==> Add an APT signing key for Docker"
 
@@ -49,27 +47,7 @@ sudo systemctl restart docker
 
 echo "==> Add vagrant user to docker group"
 
-sudo usermod -aG docker vagrant
-
-echo "==> Add an APT signing key for Kubernetes"
-
-curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-
-echo "==> Adding APT repository for Kubernetes"
-
-sudo add-apt-repository \
-  "deb https://apt.kubernetes.io/ kubernetes-$(lsb_release -cs) main"
-sudo apt-get update
-
-echo "==> Install Kubernetes binaries"
-
-sudo apt-get install -y kubectl
-
-echo "==> Install Skaffold"
-
-wget https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
-chmod +x skaffold
-sudo mv skaffold /usr/local/bin
+sudo usermod -aG docker $USER
 
 echo "==> Install Terraform"
 
@@ -86,3 +64,14 @@ curl -fsSL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
 echo "==> Install Kustomize"
 
 curl -fsSL https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh | bash
+
+echo "==> Install Google Cloud SDK"
+
+echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+sudo apt-get update && sudo apt-get install google-cloud-sdk
+
+sudo apt-get install -y \
+  kubectl \
+  google-cloud-sdk-skaffold
+  google-cloud-sdk-cloud-build-local
