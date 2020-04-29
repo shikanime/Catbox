@@ -3,16 +3,6 @@
 set -o errexit
 set -o nounset
 
-echo "==> Install essential SSL library"
-
-sudo apt-get install -y libssh-dev
-
-echo "==> Install Haskell toolchains"
-
-sudo apt-get install -y haskell-platform
-curl -fsSL https://get.haskellstack.org/ | sh
-stack install
-
 echo "==> Install C/C++ toolchains"
 
 sudo apt-get -y update
@@ -40,25 +30,6 @@ sudo apt-get install -y \
   mesa-utils \
   libglu1-mesa-dev
 
-echo "==> Install OCaml toolchains"
-
-sudo apt-get install -y opam
-opam init -n
-opam switch create 4.06.1
-opam install -y ocamlformat menhir
-
-echo "==> Install Java OpenJDK"
-
-sudo apt-get install -y default-jdk
-
-echo "==> Install Rust toolchains"
-
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-echo "==> Install Golang toolchains"
-
-sudo apt install -y golang
-
 echo "==> Install Erlang compilation depedencies"
 
 sudo apt-get install -y \
@@ -82,17 +53,30 @@ sudo apt-get install -y \
   xsltproc \
   fop
 
+echo "==> Install Python dependencies"
+
+sudo apt-get install -y \
+  libbz2-dev \
+  libsqlite3-dev
+
 echo "==> Add ASDF plugins"
 
-asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
-asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
-asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
-asdf plugin-add cmake https://github.com/srivathsanmurali/asdf-cmake.git
+asdf plugin add nodejs
+asdf plugin add erlang
+asdf plugin add rebar
+asdf plugin add elixir
+asdf plugin add cmake
+asdf plugin add ruby
+asdf plugin add rust
+asdf plugin add haskell
+asdf plugin add python
+asdf plugin add yarn
+asdf plugin add java
+asdf plugin add swiprolog
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 asdf install
 
-echo "==> Install Elixir utilities"
+echo "==> Configure Elixir utilities"
 
 mix do \
   local.hex --force, \
@@ -101,7 +85,6 @@ mix do \
 
 echo "==> Configure NodeJS"
 
-curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 yarn global add \
   bs-platform \
   typescript \
@@ -109,6 +92,20 @@ yarn global add \
   ts-node \
   eslint \
   prettier
+
+echo "==> Configure Rust toolchain"
+
+rustup toolchain install stable
+
+echo "==> Configure  Haskell toolchains"
+
+stack install
+
+echo "==> Configure OCaml toolchains"
+
+opam init -n
+opam switch create 4.06.1
+opam install -y ocamlformat menhir
 
 echo "==> Install Emscripten compiler"
 

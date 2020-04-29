@@ -49,29 +49,12 @@ echo "==> Add vagrant user to docker group"
 
 sudo usermod -aG docker $USER
 
-echo "==> Install Terraform"
+echo "==> Add ASDF plugins"
 
-sudo apt-get install -y unzip
-wget https://releases.hashicorp.com/terraform/0.12.21/terraform_0.12.21_linux_amd64.zip
-unzip terraform_0.12.21_linux_amd64.zip
-rm -f terraform_0.12.21_linux_amd64.zip
-sudo mv terraform /usr/local/bin/
-
-echo "==> Install Helm"
-
-curl -fsSL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
-
-echo "==> Install Kustomize"
-
-curl -fsSL https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh | bash
-
-echo "==> Install Google Cloud SDK"
-
-echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
-sudo apt-get update && sudo apt-get install google-cloud-sdk
-
-sudo apt-get install -y \
-  kubectl \
-  google-cloud-sdk-skaffold
-  google-cloud-sdk-cloud-build-local
+asdf plugin add terraform
+asdf plugin add helm
+asdf plugin add kustomize
+asdf plugin add skaffold
+asdf plugin add kubectl
+asdf plugin add gcloud
+asdf install
