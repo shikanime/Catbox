@@ -54,7 +54,15 @@ echo "==> Add ASDF plugins"
 asdf plugin add terraform
 asdf plugin add helm
 asdf plugin add kustomize
-asdf plugin add skaffold
-asdf plugin add kubectl
 asdf plugin add gcloud
 asdf install
+
+echo "==> Install gcloud components"
+
+gcloud components install \
+  beta \
+  alpha \
+  kubectl \
+  skaffold \
+  cloud-build-local \
+  app-engine-python

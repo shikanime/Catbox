@@ -10,8 +10,6 @@ haskell 8.8.3
 golang 1.14.2
 helm 3.2.0
 kustomize 3.5.4
-kubectl 1.18.2
-skaffold 1.7.0
 rebar 3.13.1
 yarn 1.22.0
 python 3.8.2
