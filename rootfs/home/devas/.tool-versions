@@ -1,7 +1,7 @@
 nodejs 14.0.0
 ruby 2.7.1
 elixir 1.10.3
-erlang 22.3.3
+erlang 23.0
 cmake 3.17.2
 opam 2.0.7
 rust 1.43.0
