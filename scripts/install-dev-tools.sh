@@ -58,6 +58,10 @@ echo "==> Install Python dependencies"
 sudo apt-get install -y \
   libbz2-dev \
   libsqlite3-dev
+  
+echo "==> Install Latex"
+
+sudo apt-get install -y texlive-full
 
 echo "==> Add ASDF plugins"
 
