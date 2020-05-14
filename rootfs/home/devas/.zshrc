@@ -1,5 +1,4 @@
 # Windows
-export WINDOWS_HOME="/mnt/c/Users/$USER"
 export DISPLAY=localhost:0.0
 export LIBGL_ALWAYS_INDIRECT=1
 umask 022
