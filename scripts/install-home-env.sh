@@ -25,12 +25,12 @@ sudo apt-get install -y \
 
 echo "==> Install Oh my Zsh"
 
-curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash -s -- -y
+curl -sSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash -s -- -y
 sudo chsh -s $(which zsh) $USER
 
 echo "==> Install Starship"
 
-curl -fsSL https://starship.rs/install.sh | bash -s -- -y
+curl -sSL https://starship.rs/install.sh | bash -s -- -y
 
 echo "==> Install ASDF"
 

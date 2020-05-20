@@ -11,7 +11,7 @@ sudo apt-get install -y \
 
 echo "==> Add an APT signing key for Docker"
 
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+curl -sSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
 echo "==> Add APT repository for stable version"
 
@@ -54,11 +54,11 @@ echo "==> Add ASDF plugins"
 asdf plugin add terraform
 asdf plugin add helm
 asdf plugin add kustomize
-asdf plugin add gcloud
 asdf install
 
 echo "==> Install gcloud components"
 
+curl https://sdk.cloud.google.com | bash
 gcloud components install \
   beta \
   alpha \

@@ -58,10 +58,18 @@ echo "==> Install Python dependencies"
 sudo apt-get install -y \
   libbz2-dev \
   libsqlite3-dev
-  
+
 echo "==> Install Latex"
 
 sudo apt-get install -y texlive-full
+
+echo "==> Install Rust"
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+echo "==> Install Haskell"
+
+curl -sSL https://get.haskellstack.org/ | sh
 
 echo "==> Add ASDF plugins"
 
@@ -70,13 +78,10 @@ asdf plugin add erlang
 asdf plugin add rebar
 asdf plugin add elixir
 asdf plugin add cmake
+asdf plugin add golang
 asdf plugin add ruby
-asdf plugin add rust
-asdf plugin add haskell
-asdf plugin add python
 asdf plugin add yarn
 asdf plugin add java
-asdf plugin add swiprolog
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 asdf install
 
