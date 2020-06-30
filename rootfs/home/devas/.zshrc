@@ -3,6 +3,15 @@ export DISPLAY=localhost:0.0
 export LIBGL_ALWAYS_INDIRECT=1
 umask 022
 
+# Shortcuts
+alias c=code-insiders
+alias g=git
+alias m=mix
+alias y=yarn
+
+# Docker
+export DOCKER_BUILDKIT=1
+
 # Erlang
 export ERL_AFLAGS="-kernel shell_history enabled"
 
@@ -21,7 +30,13 @@ source $HOME/.asdf/plugins/java/set-java-home.zsh
 # oh-my-zsh.
 export ZSH="$HOME/.oh-my-zsh"
 plugins=(
+  golang
+  cargo
+  vscode
+  docker
+  ubuntu
   git
+  dotenv
   mix
   kubectl
   gcloud
