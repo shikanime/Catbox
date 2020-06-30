@@ -1,0 +1,11 @@
+[user]
+name = Shikanime Deva
+email = deva.shikanime@protonmail.com
+[core]
+editor = nvim
+excludesfile = /home/devas/.gitignore
+[credential]
+helper = /mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe
+[pull]
+rebase = true
+ff = only
