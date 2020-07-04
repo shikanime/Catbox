@@ -63,6 +63,10 @@ echo "==> Install Latex"
 
 sudo apt-get install -y texlive-full
 
+echo "==> Install Opam"
+
+sudo apt-get install -y opam
+
 echo "==> Install Rust"
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
