@@ -40,6 +40,7 @@ sudo apt-get install -y \
   libyaml-dev \
   libxslt1-dev \
   libffi-dev \
+  libncurses5-dev \
   libtool \
   unixodbc-dev \
   libwxgtk3.0-gtk3-dev \
