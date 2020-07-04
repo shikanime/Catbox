@@ -1,13 +1,7 @@
 # Windows
-export DISPLAY=localhost:0.0
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 export LIBGL_ALWAYS_INDIRECT=1
 umask 022
-
-# Shortcuts
-alias c=code-insiders
-alias g=git
-alias m=mix
-alias y=yarn
 
 # Docker
 export DOCKER_BUILDKIT=1
