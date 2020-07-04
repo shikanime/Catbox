@@ -68,6 +68,10 @@ echo "==> Install Opam"
 
 sudo apt-get install -y opam
 
+echo "==> Install golang"
+
+sudo apt-get install -y golang
+
 echo "==> Install Rust"
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -83,7 +87,6 @@ asdf plugin add erlang
 asdf plugin add rebar
 asdf plugin add elixir
 asdf plugin add cmake
-asdf plugin add golang
 asdf plugin add ruby
 asdf plugin add yarn
 asdf plugin add java
