@@ -4,7 +4,6 @@ erlang 23.0.2
 rebar 3.13.2
 terraform 0.12.28
 helm 3.2.1
-kustomize 3.6.1
 java openjdk-14.0.1
 ruby 2.7.1
 cmake 3.17.3
