@@ -108,7 +108,8 @@ yarn global add \
   tslint \
   ts-node \
   eslint \
-  prettier
+  prettier \
+  reason-cli
 
 echo "==> Configure Rust toolchain"
 
