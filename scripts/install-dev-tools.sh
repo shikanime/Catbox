@@ -98,7 +98,7 @@ echo "==> Configure Elixir utilities"
 mix do \
   local.hex --force, \
   local.rebar --force, \
-  archive.install hex phx_new 1.5.1 --force
+  archive.install hex phx_new 1.5.3 --force
 
 echo "==> Configure NodeJS"
 
