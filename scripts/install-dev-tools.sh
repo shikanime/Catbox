@@ -123,6 +123,7 @@ echo "==> Configure OCaml toolchains"
 opam init -n
 opam switch create 4.06.1
 opam install -y ocamlformat menhir
+opam pin add ocaml-lsp-server https://github.com/ocaml/ocaml-lsp.git
 
 echo "==> Install Emscripten compiler"
 
