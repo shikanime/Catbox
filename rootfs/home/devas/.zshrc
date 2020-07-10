@@ -15,9 +15,6 @@ export PATH="$HOME/.emsdk:$PATH"
 # Yarn global
 export PATH="$(yarn global bin):$PATH"
 
-# Emscripten
-source $HOME/.emsdk/emsdk_env.sh &>/dev/null
-
 # OPAM configuration
 source $HOME/.opam/opam-init/init.zsh
 
