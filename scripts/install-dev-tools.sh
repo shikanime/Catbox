@@ -88,7 +88,6 @@ asdf plugin add rebar
 asdf plugin add elixir
 asdf plugin add cmake
 asdf plugin add ruby
-asdf plugin add yarn
 asdf plugin add java
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 asdf install
@@ -100,8 +99,10 @@ mix do \
   local.rebar --force, \
   archive.install hex phx_new 1.5.3 --force
 
-echo "==> Configure NodeJS"
+echo "==> Configure NodeJS environment"
 
+curl -sSL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+sudo add-apt-repository "deb https://dl.yarnpkg.com/debian/ stable main"
 yarn global add \
   bs-platform \
   typescript \
