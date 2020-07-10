@@ -104,6 +104,7 @@ echo "==> Configure NodeJS environment"
 curl -sSL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 sudo add-apt-repository "deb https://dl.yarnpkg.com/debian/ stable main"
 sudo apt-get update -y
+sudo apt-get install -y yarn
 yarn global add \
   bs-platform \
   typescript \
