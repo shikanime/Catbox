@@ -12,6 +12,9 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 # EmSDK
 export PATH="$HOME/.emsdk:$PATH"
 
+# Yarn global
+export PATH="$(yarn global bin):$PATH"
+
 # Emscripten
 source $HOME/.emsdk/emsdk_env.sh &>/dev/null
 
