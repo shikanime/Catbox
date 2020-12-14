@@ -5,7 +5,13 @@ email = deva.shikanime@protonmail.com
 editor = nvim
 excludesfile = /home/devas/.gitignore
 [credential]
-helper = /mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe
+helper = manager
 [pull]
 rebase = true
 ff = only
+[rebase]
+autoStash = true
+[alias]
+adog = log --all --decorate --oneline --graph
+[init]
+defaultBranch = main
