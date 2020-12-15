@@ -153,7 +153,11 @@ zsh: base
 starship: base
 	buildah run catbox-working-container bash -c "curl -sSL https://starship.rs/install.sh | bash -s -- -y"
 
-base: locale utils
+base: tz locale utils
+
+tz: container
+	buildah copy catbox-working-container ./etc/timezone /etc/timezone
+	buildah copy catbox-working-container ./etc/localtime /etc/localtime
 
 locale: container
 	buildah run catbox-working-container apt-get install -y --no-install-recommends locales
@@ -161,48 +165,46 @@ locale: container
 	buildah config --env LANG=en_US.UTF-8 --env LANGUAGE=en_US:en --env LC_ALL=en_US.UTF-8 catbox-working-container
 
 utils: container
-	buildah run catbox-working-container bash -c " \
-		DEBIAN_FRONTEND=noninteractive \
-		apt-get install -y --no-install-recommends \
-			libssl1.1 \
-			apt-utils \
-			git \
-			openssh-client \
-			gnupg2 \
-			inotify-tools \
-			neovim \
-			iproute2 \
-			procps \
-			lsof \
-			htop \
-			net-tools \
-			psmisc \
-			curl \
-			wget \
-			rsync \
-			ca-certificates \
-			unzip \
-			software-properties-common \
-			zip \
-			nano \
-			vim-tiny \
-			less \
-			jq \
-			lsb-release \
-			apt-transport-https \
-			dialog \
-			libc6 \
-			libgcc1 \
-			libkrb5-3 \
-			libgssapi-krb5-2 \
-			libicu[0-9][0-9] \
-			liblttng-ust0 \
-			libstdc++6 \
-			zlib1g \
-			sudo \
-			ncdu \
-			man-db \
-			strace"
+	buildah run catbox-working-container apt-get install -y --no-install-recommends \
+		libssl1.1 \
+		apt-utils \
+		git \
+		openssh-client \
+		gnupg2 \
+		inotify-tools \
+		neovim \
+		iproute2 \
+		procps \
+		lsof \
+		htop \
+		net-tools \
+		psmisc \
+		curl \
+		wget \
+		rsync \
+		ca-certificates \
+		unzip \
+		software-properties-common \
+		zip \
+		nano \
+		vim-tiny \
+		less \
+		jq \
+		lsb-release \
+		apt-transport-https \
+		dialog \
+		libc6 \
+		libgcc1 \
+		libkrb5-3 \
+		libgssapi-krb5-2 \
+		libicu[0-9][0-9] \
+		liblttng-ust0 \
+		libstdc++6 \
+		zlib1g \
+		sudo \
+		ncdu \
+		man-db \
+		strace
 
 container:
 	buildah from --name catbox-working-container ubuntu:20.10
