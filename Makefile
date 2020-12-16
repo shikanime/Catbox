@@ -24,9 +24,9 @@ kube: base gcloud
 		mkdir -p /tmp/krew-install && \
 		cd /tmp/krew-install && \
 		curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/krew.tar.gz" && \
-		tar zxvf krew.tar.gz krew-linux_amd64 && \
-		./krew-linux_amd64 install krew \
-		rm -rf /tmp/krew-install
+		tar zxvf krew.tar.gz ./krew-linux_amd64 && \
+		./krew-linux_amd64 install krew && \
+		rm -rf /tmp/krew-install"
 
 gcloud: home
 	buildah run --user devas catbox-working-container bash -c "curl https://sdk.cloud.google.com | bash -s -- --disable-prompts"
@@ -62,9 +62,6 @@ cpp: base asdf
 	buildah run --user devas catbox-working-container -- zsh -i -c "asdf plugin add cmake"
 
 elixir: base erlang asdf
-	buildah run catbox-working-container mix do \
-		local.hex --force, \
-		local.rebar --force
 	buildah run --user devas catbox-working-container -- zsh -i -c "asdf plugin add elixir"
 
 erlang: base asdf java
@@ -94,34 +91,21 @@ erlang: base asdf java
 
 java: base asdf
 	buildah run --user devas catbox-working-container -- zsh -i -c "asdf plugin add java"
-	buildah run cat <<-EOF >> /home/devas/.zshrc
-	# Java
-	if [ -f "${HOME}/.asdf/plugins/java/set-java-home.zsh" ]; then
-		. ${HOME}/.asdf/plugins/java/set-java-home.zsh
-	fi
-
-	EOF
 
 python: base asdf
 	buildah run catbox-working-container apt-get install -y --no-install-recommends \
 		libbz2-dev \
 		libsqlite3-dev
+	buildah run --user devas catbox-working-container -- zsh -i -c "asdf plugin add python"
 
 opam: base asdf
 	buildah run catbox-working-container apt-get install -y --no-install-recommends opam
 
 go: base asdf
 	buildah run catbox-working-container apt-get install -y --no-install-recommends golang
-	buildah run cat <<-EOF >> /home/devas/.zshrc
-	# OPAM configuration
-	if [ -f "${HOME}/.opam/opam-init/init.zsh" ]; then
-		. ${HOME}/.opam/opam-init/init.zsh
-	fi
-
-	EOF
 
 rust: base asdf
-	buildah run catbox-working-container bash -c "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
+	buildah run --user devas catbox-working-container bash -c "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y"
 
 node: base asdf
 	buildah run --user devas catbox-working-container -- zsh -i -c "asdf plugin add nodejs"
@@ -136,7 +120,7 @@ haskell: base asdf
 home: devas asdf
 
 asdf: base devas
-	buildah run catbox-working-container git clone https://github.com/asdf-vm/asdf.git /home/devas/.asdf --branch v0.8.0
+	buildah run --user devas catbox-working-container git clone https://github.com/asdf-vm/asdf.git /home/devas/.asdf --branch v0.8.0
 
 devas: base zsh starship
 	buildah run catbox-working-container adduser --disabled-password --shell /usr/bin/zsh devas --gecos "Shikanime Deva"
@@ -197,7 +181,7 @@ utils: container
 		libgcc1 \
 		libkrb5-3 \
 		libgssapi-krb5-2 \
-		libicu[0-9][0-9] \
+		libicu-dev \
 		liblttng-ust0 \
 		libstdc++6 \
 		zlib1g \

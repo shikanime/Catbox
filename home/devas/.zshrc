@@ -43,3 +43,13 @@ DISABLE_UPDATE_PROMPT=true
 
 # Starship shell
 eval $(starship init zsh)
+
+# Java
+if [ -f "${HOME}/.asdf/plugins/java/set-java-home.zsh" ]; then
+  . ${HOME}/.asdf/plugins/java/set-java-home.zsh
+fi
+
+# OPAM configuration
+if [ -f "${HOME}/.opam/opam-init/init.zsh" ]; then
+  . ${HOME}/.opam/opam-init/init.zsh
+fi
